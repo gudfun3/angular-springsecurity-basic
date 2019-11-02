@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    text-decoration: none;
+    color: rgb(6, 191, 204);
+}
+.formStyle{
+
+    margin-top: 100px;
+    margin-left: 350px;
+    
+}
+.mat-card{
+    background:#04c2347e;
+}
+.mat-raised-button{
+    margin-left: 107px !important;
+    opacity: 1 !important;
+    background: #c3d806b0;
+    color:black;
+
+}
+
+.txt-color{
+    color: chocolate;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }

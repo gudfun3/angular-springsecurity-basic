@@ -1,0 +1,27 @@
+
+  <div class="container">
+    <div class="col-md-4 col-md-ofset-8 formStyle">
+    <mat-card class="login-card" class="card-Customstyle">
+      <mat-card-header>
+        <mat-card-title class="txt-color">User Login</mat-card-title>
+      </mat-card-header>
+     
+      <mat-card-content>
+      <div>
+     <label for="username" class="txt-color">User Name  <input type="text" class="form-control" name="username" [(ngModel)]="credentials.username"> </label>
+     </div> 
+     <div>
+     <label for="password" class="txt-color"> Password  <input type="text" class="form-control" name="password" [(ngModel)]="credentials.password"> </label>
+    </div>
+
+    <div>
+      <label for="signUp"> Not a Member <a (click)=signUp() style="cursor: pointer;color: chocolate" >Click Here</a> to SignUp  </label>
+     </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)=login()>Login </button>
+       
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  </div>

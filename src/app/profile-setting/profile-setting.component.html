@@ -1,0 +1,14 @@
+
+<app-header></app-header>
+<p>profile-setting works!</p>
+
+{{this.username}}
+
+<!-- (change) method is necessary -->
+<div class="container">
+        <input type="file" name="photo" (change)="getFileDetails($event)" />
+        <button type="button" class="btn btn-success btn-s" 
+          (click)="uploadAvatar()">
+              Upload profile picture
+        </button>
+</div>

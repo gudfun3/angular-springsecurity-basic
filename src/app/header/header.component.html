@@ -1,0 +1,22 @@
+<header>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <img mat-button src="assets/images/img_avatar.png" alt="Avatar" class="avatar">
+          <h1>{{userName}}</h1>
+          <span class="menu-spacer"></span>
+          <div>
+            <a mat-button [routerLink]="'/profile'"> Profile </a>
+            <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+            <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
+            <a mat-button [routerLink]="'/activities'"> Activities </a>
+            <a mat-button [routerLink]="'/profile-setting'">Profile Setting</a>
+            <a mat-button [routerLink]="'/login'" (click)=logout()> Logout </a>
+      
+          </div>
+        </mat-toolbar-row>
+      
+        <mat-toolbar-row>
+            <span style="font-size: 12px;">SimpleCMS  helps you easily manage your Contents</span>
+          </mat-toolbar-row>
+      </mat-toolbar>
+    </header>

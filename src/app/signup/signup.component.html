@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="col-md-4 col-md-ofset-8 formStyle">
+    <mat-card class="login-card" class="card-Customstyle">
+      <mat-card-header>
+        <mat-card-title class="txt-color">Sign Up!</mat-card-title>
+      </mat-card-header>
+     <form [formGroup]="myForm" novalidate (ngSubmit)="createUser(myForm.value, myForm.valid)">
+      <mat-card-content>
+      <div class="formGroup">
+     <label for="username"class="txt-color" >User Name *  </label>
+      <input type="text" formControlName="username" class="form-control" name="username" required >
+    
+    <div *ngIf="myForm.get('username').invalid && (myForm.get('username').dirty || myForm.get('username').touched || myForm.get('username').required)">
+     <span [hidden]="myForm.get('username').required"style="color: #1382b7;" >
+        UserName is required
+     </span> 
+    </div>
+    </div>
+     <div class="formGroup">
+     <label for="password" class="txt-color"> Password * </label>
+      <input type="text"  class="form-control" formControlName="password" name="password" required> 
+      <div *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched || myForm.get('username').required)">
+       <span [hidden]="myForm.get('password').required" style="color: #1382b7;" >
+          Password is required
+       </span> 
+      </div>
+    
+    </div>
+    <div class="formGroup">
+    <label for="email" class="txt-color"> Email id *</label>
+     <input type="text"  class="form-control" formControlName="email" name="email" required> 
+     <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched || myForm.get('username').required)">
+      <span [hidden]="myForm.get('email').required" style="color: #1382b7;">
+         Email is required
+      </span> 
+     </div>
+     <div class="formGroup">
+        <label for="phoneNumber" class="txt-color"> Phone Number *</label>
+         <input type="text"  class="form-control" formControlName="phoneNumber" name="phoneNumber" required> 
+         <div *ngIf="myForm.get('phoneNumber').invalid && (myForm.get('phoneNumber').dirty || myForm.get('phoneNumber').touched || myForm.get('phoneNumber').required)">
+          <span [hidden]="myForm.get('phoneNumber').required" style="color: #1382b7;">
+              Phone Number is required
+          </span> 
+         </div>
+    </div>
+    </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+       
+      </mat-card-actions>
+    </form>
+    </mat-card>
+  </div>
+  </div>
+  <div>
+  </div>
