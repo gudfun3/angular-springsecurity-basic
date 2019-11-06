@@ -41,7 +41,8 @@ export class ProfileSettingComponent implements OnInit {
     const httpOptions = {
   headers:  new HttpHeaders({
   'Authorization': 'Basic' + btoa(sessionStorage.getItem('username')+':'+sessionStorage.getItem('password'))
-   } )
+   } ),
+   withCredentials: true
 };
     this.http.post(Constants.HOME_URL+'photos/add', frmData,httpOptions).subscribe(
       data => {

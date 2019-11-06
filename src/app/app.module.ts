@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '../../node_modules/@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule,MatCardModule, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule, MatIconModule, MatToolbarRow, MatToolbarModule, MatListModule} from '@angular/material';
 import { SignupComponent } from './signup/signup.component';
@@ -18,6 +18,7 @@ import { ProfileSettingComponent } from './profile-setting/profile-setting.compo
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { HttpRequestInterceptor } from './HttpRequestInterceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     MatListModule
   ],
   providers: [
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
