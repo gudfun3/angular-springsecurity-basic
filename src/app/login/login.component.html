@@ -6,20 +6,32 @@
         <mat-card-title class="txt-color">User Login</mat-card-title>
       </mat-card-header>
      
-      <mat-card-content>
+    <mat-card-content>
+        
       <div>
-     <label for="username" class="txt-color">User Name  <input type="text" class="form-control" name="username" [(ngModel)]="credentials.username"> </label>
-     </div> 
-     <div>
-     <label for="password" class="txt-color"> Password  <input type="text" class="form-control" name="password" [(ngModel)]="credentials.password"> </label>
-    </div>
+          <label for="username" class="txt-color">User Name  <input type="text" class="form-control" name="username" [(ngModel)]="credentials.username"> </label>
+      </div> 
+      <div>
+          <label for="password" class="txt-color"> Password  <input type="text" class="form-control" name="password" [(ngModel)]="credentials.password"> </label>
+      </div>
+      <div>
+          <label for="captcha" class="txt-color"> {{this.captcha}} </label> 
+      </div>
+      <div>
+          <input type="text" class="form-control" name="captcha" [(ngModel)]="userEnteredCaptcha"> 
+      </div>
+     
 
-    <div>
-      <label for="signUp"> Not a Member <a (click)=signUp() style="cursor: pointer;color: chocolate" >Click Here</a> to SignUp  </label>
-     </div>
+      <div>
+          <label for="signUp"> Not a Member <a (click)=signUp() style="cursor: pointer;color: chocolate" >Click Here</a> to SignUp  </label>
+      </div>
+      <div>
+          <button mat-raised-button color="primary" (click)="login();generateCaptcha()">Login </button>
+      </div>
+  
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)=login()>Login </button>
+        
        
       </mat-card-actions>
     </mat-card>

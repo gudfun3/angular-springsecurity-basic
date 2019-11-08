@@ -15,12 +15,20 @@ export class LoginComponent implements OnInit {
   authenticated=false;
   credentials={username:'',password:''};
   invalidLogin=false;
+  captcha:string="";
+  validCaptcha:boolean=false;
+  userEnteredCaptcha:string;
   constructor(private router:Router,private http:HttpClient,private loginService:AuthenticationService, private _snackBar:MatSnackBar) { }
 
   ngOnInit() {
+    this.generateCaptcha();
   }
 
    login(){
+
+    if(this.captcha){
+      this.validCaptcha=(this.captcha===this.userEnteredCaptcha);
+    }
   //   this.loginService.authenticate(this.credentials).subscribe(res=>{
   //     console.log(res);
   //     if(res){
@@ -52,14 +60,13 @@ export class LoginComponent implements OnInit {
   //   }
     
   //  })
-   
+   if(this.validCaptcha){
   this.loginService.authenticate(this.credentials).subscribe(res => {
     console.log(this.authenticated);
 
-    if(res){
+    if(res && this.validCaptcha){
 
-      this.router.navigateByUrl('/');
-      this.authenticated=true;
+      
       /*
       * Make sure you have configured the header correctly even a space or spelling mistake
       * in header will result in 401 unauthorized error and wont allow to access 
@@ -79,6 +86,8 @@ export class LoginComponent implements OnInit {
             this.authenticated = false;
         }
         this.saveToken(response);
+        this.router.navigateByUrl('/');
+        this.authenticated=true;
       },
       error => {
         if(error.status == 401){
@@ -88,6 +97,7 @@ export class LoginComponent implements OnInit {
       }
       );
    
+      
     }
     else{
       this.router.navigateByUrl("/login");
@@ -100,7 +110,11 @@ export class LoginComponent implements OnInit {
 });
   
   
-
+   }else{
+    this.credentials.username="";
+    this.credentials.password="";
+     //this.router.navigateByUrl("/login");
+   }
   }
 
 
@@ -139,4 +153,14 @@ export class LoginComponent implements OnInit {
       this.invalidLogin=true;
     }
   }
+
+   generateCaptcha(){
+     this.captcha="";
+    var f="";var e="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for(var d=0;d<5;d++){
+    this.captcha+=e.charAt(Math.floor(Math.random()*e.length));
+    }
+    return this.captcha;
+    }
+    
 }
