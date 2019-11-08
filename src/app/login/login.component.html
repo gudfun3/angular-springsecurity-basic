@@ -1,38 +1,44 @@
 
-  <div class="container">
-    <div class="col-md-4 col-md-ofset-8 formStyle">
+  <div class="container container-fluid">
+    <div class="col-md-7  formStyle">
     <mat-card class="login-card" class="card-Customstyle">
       <mat-card-header>
         <mat-card-title class="txt-color">User Login</mat-card-title>
       </mat-card-header>
      
     <mat-card-content>
-        
+        <div class="col-md-8">
+      <mat-form-field>
+          <label> User Name</label>
+          <input matInput  type="text" class="form-control" name="username" [(ngModel)]="credentials.username"> 
+      </mat-form-field>
+      <mat-form-field>
+          <label> Password</label>
+          <input matInput  type="text" class="form-control" name="password" [(ngModel)]="credentials.password">
+      </mat-form-field>
+    </div>
+      <mat-form-field>
+      <canvas id="canvas" width="60" height="60"
+            style="border: 1px solid goldenrod;"> 
+      </canvas>
+     <a (click)=redrawCaptcha() style="cursor: pointer;color: chocolate" > <mat-icon>autorenew</mat-icon></a>
+    </mat-form-field>
+     <mat-form-field>
+        <label> Please Enter the Captcha Here</label>
+          <input matInput type="text" class="form-control" name="captcha" [(ngModel)]="userEnteredCaptcha"> 
+     </mat-form-field>
       <div>
-          <label for="username" class="txt-color">User Name  <input type="text" class="form-control" name="username" [(ngModel)]="credentials.username"> </label>
-      </div> 
-      <div>
-          <label for="password" class="txt-color"> Password  <input type="text" class="form-control" name="password" [(ngModel)]="credentials.password"> </label>
-      </div>
-      <div>
-          <label for="captcha" class="txt-color"> {{this.captcha}} </label> 
-      </div>
-      <div>
-          <input type="text" class="form-control" name="captcha" [(ngModel)]="userEnteredCaptcha"> 
-      </div>
-     
-
-      <div>
-          <label for="signUp"> Not a Member <a (click)=signUp() style="cursor: pointer;color: chocolate" >Click Here</a> to SignUp  </label>
-      </div>
-      <div>
+     <mat-form-field>
+        <label for="signUp">Not a Member</label>
+           <a (click)=signUp() style="cursor: pointer;color: chocolate" >Click Here</a> to SignUp
+     </mat-form-field>
+   
+     <mat-form-field>
           <button mat-raised-button color="primary" (click)="login();generateCaptcha()">Login </button>
-      </div>
-  
+     </mat-form-field>
+    </div>
       </mat-card-content>
       <mat-card-actions>
-        
-       
       </mat-card-actions>
     </mat-card>
   </div>

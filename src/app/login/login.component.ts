@@ -12,16 +12,28 @@ import { Cookie } from 'ng2-cookies';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
   authenticated=false;
   credentials={username:'',password:''};
   invalidLogin=false;
   captcha:string="";
   validCaptcha:boolean=false;
   userEnteredCaptcha:string;
-  constructor(private router:Router,private http:HttpClient,private loginService:AuthenticationService, private _snackBar:MatSnackBar) { }
+  constructor(private router:Router,private http:HttpClient,private loginService:AuthenticationService, private _snackBar:MatSnackBar) {
+   }
 
   ngOnInit() {
+    let canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    let context = canvas.getContext("2d");
+    this.canvas=canvas;
+    this.context=context;
     this.generateCaptcha();
+    this.draw();
+  }
+  draw(){
+    this.context.font = "14px Verdana";
+    this.context.fillText(this.captcha, 10, 50);
   }
 
    login(){
@@ -162,5 +174,9 @@ export class LoginComponent implements OnInit {
     }
     return this.captcha;
     }
-    
+    redrawCaptcha(){
+      this.canvas.width=this.canvas.width;
+      this.generateCaptcha();
+      this.draw();
+    }
 }
