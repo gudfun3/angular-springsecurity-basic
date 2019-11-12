@@ -1,13 +1,13 @@
 
-  <div class="container container-fluid">
-    <div class="col-md-7  formStyle">
+  <div class="container">
+    <div class="col-md-6 formStyle">
     <mat-card class="login-card" class="card-Customstyle">
       <mat-card-header>
         <mat-card-title class="txt-color">User Login</mat-card-title>
       </mat-card-header>
      
     <mat-card-content>
-        <div class="col-md-8">
+        
       <mat-form-field>
           <label> User Name</label>
           <input matInput  type="text" class="form-control" name="username" [(ngModel)]="credentials.username"> 
@@ -16,7 +16,8 @@
           <label> Password</label>
           <input matInput  type="text" class="form-control" name="password" [(ngModel)]="credentials.password">
       </mat-form-field>
-    </div>
+   
+      
       <mat-form-field>
       <canvas id="canvas" width="60" height="60"
             style="border: 1px solid goldenrod;"> 
@@ -27,7 +28,7 @@
         <label> Please Enter the Captcha Here</label>
           <input matInput type="text" class="form-control" name="captcha" [(ngModel)]="userEnteredCaptcha"> 
      </mat-form-field>
-      <div>
+   
      <mat-form-field>
         <label for="signUp">Not a Member</label>
            <a (click)=signUp() style="cursor: pointer;color: chocolate" >Click Here</a> to SignUp
@@ -36,7 +37,7 @@
      <mat-form-field>
           <button mat-raised-button color="primary" (click)="login();generateCaptcha()">Login </button>
      </mat-form-field>
-    </div>
+  
       </mat-card-content>
       <mat-card-actions>
       </mat-card-actions>

@@ -19,8 +19,7 @@ export class ProfileSettingComponent implements OnInit {
   previewUrl:any = null;
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
-  imgData:ProfileImage;
-  imgPath:String;
+ 
 
   myFiles:string [] = [];
   sMsg:string = '';
@@ -30,7 +29,7 @@ export class ProfileSettingComponent implements OnInit {
 
   ngOnInit() {
     this.username=sessionStorage.getItem('username');
-    this.getImage();
+   
   }
 
   fileEvent(){
@@ -86,48 +85,6 @@ getFileDetails (event) {
 
 
 }
-downloadProfileImg():Observable<String>{	
-  // const credentials :JSON=JSON.parse(Cookie.get("credentials"));
-  
-  // const username=credentials["username"];
-  return this.http.get(Constants.HOME_URL+'photos/', { responseType: 'blob' }).pipe(
-    switchMap(response => this.readImage(response))
-  );
-  
- }
 
- readImage(blob:Blob):Observable<String>{
-   return Observable.create(obs => {
-    const reader = new FileReader();
 
-    reader.onerror = err => obs.error(err);
-    reader.onabort = err => obs.error(err);
-    reader.onload = () => obs.next(reader.result);
-    reader.onloadend = () => obs.complete();
-
-    return reader.readAsDataURL(blob);
- })
-}
-
-async getImage() {
-  await this.downloadProfileImg()
-    .subscribe(
-      imgData =>{
-       this.imgPath = imgData ;
-        this.imgPath=imgData.split(",")[1];
-       console.log(imgData.split(",")[1]);
-       this.convertImage();
-       const imgD=JSON.parse(atob(this.imgPath.valueOf())) as ProfileImage;
-       this.imgPath=atob(imgD.image.data);
-       console.log(this.imgPath);
-      },
-      err => console.log(err)
-    );
-    console.log(this.imgData);
-    
-}
-convertImage(){
- //const img=this.imgData.image.id;
-  console.log();
-}
 }
